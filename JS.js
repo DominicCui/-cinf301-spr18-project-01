@@ -10,6 +10,8 @@ window.onload = function() {
         // console.log(rowIndex, columnIndex)
         switch_elems(rowIndex, columnIndex);
     })
+
+    newGame();
 }
 
 function switch_elems(i, j) {
@@ -50,4 +52,35 @@ function switch_elems(i, j) {
         table.rows[i].cells[j].innerHTML = val2.toString();
         table.rows[row].cells[column].innerHTML = val1.toString();
     }
+}
+
+function newGame() {
+    const random = Array();
+    const button = document.querySelector('button');
+    const table = document.querySelector('table');
+
+    button.addEventListener('click', (event) => {
+        rand = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+        let emptyR = rand;
+        rand = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+        let emptyC = rand;
+
+        for (var a = [ 1, 2, 3, 4, 5, 6, 7, 8], i = a.length;  i--; ) {
+            var rand = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
+            random[i] = rand;
+        }
+
+        let num = 0;
+
+        for(let t = 0; t <= 2; t++){
+            for(let k = 0; k <= 2; k++){
+                if(t == emptyR && k == emptyC){
+                    table.rows[t].cells[k].innerHTML = null;
+                }else{
+                    table.rows[t].cells[k].innerHTML = random[num].toString();
+                    num++;
+                }
+            }
+        }
+    })
 }
