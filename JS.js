@@ -8,6 +8,7 @@ window.onload = function() {
         const columns = Array.from(rowsArray[rowIndex].querySelectorAll('td'));
         const columnIndex = columns.findIndex(column => column == event.target);
         switch_elems(rowIndex, columnIndex);
+
     })
 }
 
@@ -49,6 +50,7 @@ function switch_elems(i, j) {
         table.rows[i].cells[j].innerHTML = val2.toString();
         table.rows[row].cells[column].innerHTML = val1.toString();
     }
+    window.setTimeout(1000);
     checkWin();
 }
 
@@ -85,13 +87,16 @@ function newGame() {
 
 function checkWin(){
     const table = document.querySelector('table');
-    const a = [ 1, 2, 3, 8, null, 4, 7, 6, 5];
+    const a = [ 1, 2, 3, 8, 0, 4, 7, 6, 5];
     let win =  0;
     let num = 0;
 
     for(let r = 0; r <= 2; r++){
         for(let c = 0; c <= 2; c++){
-            if(table.rows[r].cells[c].innerHTML == a[num].toString()){
+            if(r == 1 && c == 1){
+                num++;
+            }
+            else if(table.rows[r].cells[c].innerHTML === a[num].toString()){
                 win = 1;
                 num++;
             }
@@ -101,7 +106,7 @@ function checkWin(){
             }
         }
     }
-    if(win == 1){
+    if(win === 1){
         window.alert("Solved the puzzle");
     }
 }
