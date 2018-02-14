@@ -1,7 +1,7 @@
 table {
     background-color: black;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     width: 660px;
     height: 660px;
@@ -28,7 +28,14 @@ tr:nth-child(even) {
 
 button{
     position: absolute;
-    top: 90%;
+    top: 80%;
     left: 50%;
+}
 
+p{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
 }

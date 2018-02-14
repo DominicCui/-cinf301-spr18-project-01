@@ -1,3 +1,5 @@
+var step = 0;
+
 window.onload = function() {
     const table = document.querySelector('table');
     const rows = document.querySelectorAll('tr');
@@ -8,8 +10,8 @@ window.onload = function() {
         const columns = Array.from(rowsArray[rowIndex].querySelectorAll('td'));
         const columnIndex = columns.findIndex(column => column == event.target);
         switch_elems(rowIndex, columnIndex);
+    });
 
-    })
 }
 
 function switch_elems(i, j) {
@@ -50,7 +52,7 @@ function switch_elems(i, j) {
         table.rows[i].cells[j].innerHTML = val2.toString();
         table.rows[row].cells[column].innerHTML = val1.toString();
     }
-    window.setTimeout(1000);
+    // window.setTimeout(1000);
     checkWin();
 }
 
@@ -82,6 +84,8 @@ function newGame() {
                 }
             }
         }
+
+        document.getElementById("messenge").innerHTML = "New game starting";
     })
 }
 
@@ -107,6 +111,15 @@ function checkWin(){
         }
     }
     if(win === 1){
-        window.alert("Solved the puzzle");
+        // window.alert("Solved the puzzle");
+        confirm("Solved the puzzle");
+        step ++;
+        document.getElementById("messenge").innerHTML = "Solved the puzzle in step " + step;
+        return step = 0;
     }
+    else{
+        step ++;
+        document.getElementById("messenge").innerHTML = "Solving the puzzle: used step " + step;
+    }
+
 }
